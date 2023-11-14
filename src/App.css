@@ -1,0 +1,27 @@
+body{
+    margin : 20px;
+    background-color: rgb(35, 35, 35);
+}
+
+
+.cardcontainer {
+    height: 250px;
+    padding: 20px;
+
+}
+.cardclass  {
+    display: inline-block;
+    margin:10px;
+    height:300px;
+    width:200px;
+    overflow: hidden;
+    top:0;
+    border: 3px solid rgb(255, 255, 255);
+}
+
+.cardclass:hover {
+    border: 3px solid rgb(203, 112, 22);
+    box-shadow: 2px 5px ;
+    overflow:auto;
+    
+}
