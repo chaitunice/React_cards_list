@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import Card from './mycard1'
+import Card from './mycard1.js'
 import { Button } from 'semantic-ui-react'
 import axios from 'axios';
 
