@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# React Cards List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository is a small React frontend app that fetches a list of items from a backend API and displays them as a responsive card grid. The goal of the app is to present movie or watch-related data in a clean, interactive layout.
 
-## Available Scripts
+## What this project is
 
-In the project directory, you can run:
+This project is built with React and Create React App. It demonstrates how to:
 
-### `npm start`
+- fetch data from an external API using Axios
+- manage loading and error states in React
+- render reusable components dynamically
+- organize styling with CSS and Sass
+- present data in a card-based UI
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## How the repo works
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The app starts in `src/App.js`, which renders the main page and loads the `MyButton` component.
 
-### `npm test`
+The main interaction works like this:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. The user clicks the `Click Here` button.
+2. `src/components/myButton.js` calls the backend endpoint:
+   `https://drfproject.azurewebsites.net/watch/list/`
+3. The API response is stored in state using `useState()`.
+4. Each returned item is mapped into a card component.
+5. `src/components/mycard1.js` displays that item’s title, platform, rating, and storyline.
 
-### `npm run build`
+The card layout and visuals are styled in `src/App2.scss` and `src/App1.css`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Project structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `src/App.js` — app entry point
+- `src/components/myButton.js` — fetches data and renders the card grid
+- `src/components/mycard1.js` — individual card UI
+- `src/App1.css` — base styling
+- `src/App2.scss` — grid and card visual styling
+- `public/` — static app assets
+- `package.json` — project scripts and dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## How to run it locally
 
-### `npm run eject`
+Install dependencies:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Start the app:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Then open http://localhost:3000 in your browser.
 
-## Learn More
+## Tech stack
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- React
+- Create React App
+- Axios
+- Semantic UI React
+- Sass
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Notes
 
-### Code Splitting
+This app relies on an external backend API for its data. If that API is unavailable or returns an error, the app shows an error message instead of the list of cards.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
