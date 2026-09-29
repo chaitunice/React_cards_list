@@ -1,11 +1,12 @@
 import React from 'react'
 import { Rating } from 'semantic-ui-react'
+import cardImage from '../walls/test4.jpg'
 
 const Mycard1 = (props) => (
   <div class="item">
     <a href="#0" aria-labelledby="person1"></a>
     {/* <img src='https://images.unsplash.com/photo-1590424744257-fdb03ed78ae0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt={props.desc.title} /> */}
-    <img src={require('../walls/test4.jpg')} />
+    <img src={cardImage} />
     <div class="item__overlay">
       <h3 id="person1" aria-hidden="true">{props.desc.title}</h3>
       <h5>@ {props.desc.platform_name}</h5>
