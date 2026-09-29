@@ -1,61 +1,47 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Card from './mycard1.js'
 import { Button } from 'semantic-ui-react'
 import axios from 'axios';
 
-const MyButton = (props) => {
-    
-    let card_data = [];
-    const [data, setData] = useState({data: []});
+const MyButton = () => {
+    const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [err, setErr] = useState('');
-    
-    // function sleep(ms) {
-    //     return new Promise(resolve => setTimeout(resolve, ms));
-    // }
 
     const handleClick = async () => {
         setIsLoading(true);
+        setErr('');
         try {
-
-            const mydata = await axios.get('https://drfproject.azurewebsites.net/watch/list/', {
-            headers: {
-            Accept: 'application/json',
-            'Content-Type':'application/x-www-form-urlencoded'
-            },
-        },[])
-        .then((response) => {
-            // }, await sleep(2000)).then((response) => {
+            const response = await axios.get('https://drfproject.azurewebsites.net/watch/list/', {
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
             setData(response.data);
-            console.log('data is: ', JSON.stringify(response.data, null, 4));
-        })
-        } 
-    
-        catch (err) {
-        setErr(err.message);
+        } catch (error) {
+            setErr(error.message);
         }
 
         finally {
-        setIsLoading(false);
+            setIsLoading(false);
         }
     }
-    console.log({data})
-    
-    if (data.length > 0) {
-        card_data = data.map(i => ( <div className="cardclass"><Card desc={i} /></div> ))
-        
-    }
-    else{ card_data = []; }
-    
-    console.log('card_data is: ', card_data);
 
+    const cardData = data.map((item, index) => (
+        <div className="cardclass" key={item.id ?? index}>
+            <Card desc={item} />
+        </div>
+    ));
     
-return (
-    <div>
-        <Button loading={isLoading} content='Click Here' onClick={handleClick} /> <br /><br />
-        <div class="grid">{card_data}</div>
-    </div>
-)};
+    return (
+        <div>
+            <Button loading={isLoading} content='Click Here' onClick={handleClick} />
+            {err && <p role="alert">{err}</p>}
+            <br /><br />
+            <div className="grid">{cardData}</div>
+        </div>
+    );
+};
 
 export default MyButton
